@@ -4,23 +4,23 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { COLORS, SIZES } from "../../constants";
 
-const ProductCardView = () => {
+const ProductCardView = ({ product }) => {
   const navigation = useNavigation();
+  const handlePress = () => {
+    navigation.navigate("ProductDetails");
+  };
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("ProductDetails")}>
+    <TouchableOpacity onPress={handlePress}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: "https://source.unsplash.com/1024x768/?nature" }}
-            style={styles.image}
-          />
+          <Image source={{ uri: product.image }} style={styles.image} />
         </View>
         <View style={styles.details}>
           <Text style={styles.title} numberOfLines={1}>
-            Product
+            {product.name}
           </Text>
-          <Text style={styles.supplier}>Product</Text>
-          <Text style={styles.title}>$350</Text>
+          <Text style={styles.supplier}>{product.supplier}</Text>
+          <Text style={styles.price}>${product.price}</Text>
         </View>
         <TouchableOpacity style={styles.addBtn}>
           <Ionicons name='add-circle' size={35} color={COLORS.primary} />

@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { COLORS, SIZES } from "../../constants/index";
+import { data } from "../../data";
 
 const Welcome = () => {
   const navigation = useNavigation();
@@ -16,7 +17,7 @@ const Welcome = () => {
     <View>
       <View style={styles.container}>
         <Text style={styles.welcomeTxt(COLORS.black, SIZES.xSmall)}>
-          Find The Most
+          {data.title}
         </Text>
         <Text style={styles.welcomeTxt(COLORS.primary, 0)}>
           Luxurious Furniture
