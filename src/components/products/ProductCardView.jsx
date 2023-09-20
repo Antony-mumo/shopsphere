@@ -7,7 +7,7 @@ import { COLORS, SIZES } from "../../constants";
 const ProductCardView = ({ product }) => {
   const navigation = useNavigation();
   const handlePress = () => {
-    navigation.navigate("ProductDetails");
+    navigation.navigate("ProductDetails", { product });
   };
   return (
     <TouchableOpacity onPress={handlePress}>

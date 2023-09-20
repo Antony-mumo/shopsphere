@@ -1,14 +1,17 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { COLORS, SIZES } from "../../constants";
+import { data } from "../../data";
 
 const Headings = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>New Arrivals</Text>
-        <TouchableOpacity>
+        <Text style={styles.headerTitle}>{data.heading}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("ProductList")}>
           <Ionicons name='ios-grid' size={24} color={COLORS.primary} />
         </TouchableOpacity>
       </View>

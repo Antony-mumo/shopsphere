@@ -4,11 +4,13 @@ import {
   MaterialCommunityIcons,
   SimpleLineIcons,
 } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { COLORS, SIZES } from "../constants";
-
 const ProductDetails = ({ navigation }) => {
+  const route = useRoute();
+  const { product } = route.params;
   const [count, setCount] = useState(10);
 
   const increment = () => {
@@ -28,16 +30,13 @@ const ProductDetails = ({ navigation }) => {
           <Ionicons name='heart' size={30} color={COLORS.primary} />
         </TouchableOpacity>
       </View>
-      <Image
-        source={{ uri: "https://source.unsplash.com/1024x768/?nature" }}
-        style={styles.image}
-      />
+      <Image source={{ uri: product.image }} style={styles.image} />
 
       <View style={styles.details}>
         <View style={styles.titleRow}>
-          <Text style={styles.title}>Product</Text>
+          <Text style={styles.title}>{product.name} </Text>
           <View style={styles.priceWrapper}>
-            <Text style={styles.price}>$350</Text>
+            <Text style={styles.price}>${product.price}</Text>
           </View>
         </View>
 
@@ -60,19 +59,13 @@ const ProductDetails = ({ navigation }) => {
         </View>
         <View style={styles.descriptionWrapper}>
           <Text style={styles.description}>Description</Text>
-          <Text style={styles.descText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-          </Text>
+          <Text style={styles.descText}>{product.descriptionText} </Text>
         </View>
         <View style={{ marginBottom: SIZES.small }}>
           <View style={styles.location}>
             <View style={{ flexDirection: "row" }}>
               <Ionicons name='location-outline' size={20} />
-              <Text> Nairobi</Text>
+              <Text> {product.product_location} </Text>
             </View>
 
             <View style={{ flexDirection: "row" }}>
@@ -130,11 +123,12 @@ const styles = StyleSheet.create({
     width: SIZES.width,
   },
   cartBtn: {
-    width: SIZES.width * 0.7,
+    width: SIZES.width * 0.6,
     backgroundColor: COLORS.black,
     padding: SIZES.small / 2,
     borderRadius: SIZES.large,
     marginLeft: 12,
+    alignItems: "center",
   },
   titleRow: {
     marginHorizontal: 20,

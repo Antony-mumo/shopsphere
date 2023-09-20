@@ -20,7 +20,7 @@ const Welcome = () => {
           {data.title}
         </Text>
         <Text style={styles.welcomeTxt(COLORS.primary, 0)}>
-          Luxurious Furniture
+          {data.description}
         </Text>
       </View>
 
@@ -35,7 +35,7 @@ const Welcome = () => {
             styles={styles.searchInput}
             value=''
             onPressIn={() => navigation.navigate("Search")}
-            placeholder='What are you looking for'
+            placeholder={data.search_placeholder}
           />
         </View>
         <View>

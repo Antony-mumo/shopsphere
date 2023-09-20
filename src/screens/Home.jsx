@@ -13,6 +13,7 @@ import Headings from "../components/home/Headings";
 import Welcome from "../components/home/Welcome";
 import ProductRow from "../components/products/ProductRow";
 import { COLORS, SIZES } from "../constants/index";
+import { data } from "../data";
 
 const Home = () => {
   return (
@@ -20,10 +21,10 @@ const Home = () => {
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
           <Ionicons name='location-outline' size={24} />
-          <Text style={styles.location}>Nairobi, Kenya</Text>
+          <Text style={styles.location}>{data.location} </Text>
           <View style={styles.cartContainer}>
             <View style={styles.cartCount}>
-              <Text style={styles.cardNumber}>8</Text>
+              <Text style={styles.cardNumber}>{data.cartNumber} </Text>
             </View>
             <TouchableOpacity>
               <Fontisto name='shopping-bag' size={24} />

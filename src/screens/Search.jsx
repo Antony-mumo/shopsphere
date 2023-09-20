@@ -1,6 +1,6 @@
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS, SIZES } from "../constants/index";
 
 const Search = () => {
-  const navigation = useNavigation();
+  const [searchKey, setSearchKey] = useState("");
+  console.log(searchKey);
   return (
     <SafeAreaView>
       <View style={styles.searchContainer}>
@@ -24,8 +25,8 @@ const Search = () => {
         <View style={styles.searchWrapper}>
           <TextInput
             styles={styles.searchInput}
-            value=''
-            onPressIn={() => {}}
+            value={searchKey}
+            onChangeText={setSearchKey}
             placeholder='What are you looking for'
           />
         </View>
