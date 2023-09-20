@@ -27,7 +27,11 @@ const Welcome = () => {
       <View style={styles.searchContainer}>
         <View>
           <TouchableOpacity>
-            <Feather name='search' size={24} style={styles.searchIcon} />
+            <Ionicons
+              name='camera-outline'
+              size={SIZES.xLarge}
+              style={styles.searchIcon}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.searchWrapper}>
@@ -40,11 +44,7 @@ const Welcome = () => {
         </View>
         <View>
           <TouchableOpacity style={styles.searchBtn}>
-            <Ionicons
-              name='camera-outline'
-              size={SIZES.xLarge}
-              color={COLORS.offwhite}
-            />
+            <Feather name='search' size={24} color={COLORS.offwhite} />
           </TouchableOpacity>
         </View>
       </View>

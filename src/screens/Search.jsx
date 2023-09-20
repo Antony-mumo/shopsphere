@@ -13,13 +13,33 @@ import { COLORS, SIZES } from "../constants/index";
 
 const Search = () => {
   const [searchKey, setSearchKey] = useState("");
-  console.log(searchKey);
+  const [searchResult, setSearchResult] = useState({});
+
+  //http://localhost:3000/api/products/search/${searchKey}
+  const handleSearch = () => {
+    try {
+      const response = axios.get(
+        `http://localhost:3000/api/products/search/${searchKey}`
+        setSearchResults(response.data)
+      );
+      console.log("===============");
+      console.log(response.data);
+      console.log("===============");
+      //response.data
+    } catch (error) {
+      console.log("failed to get products", error);
+    }
+  };
   return (
     <SafeAreaView>
       <View style={styles.searchContainer}>
         <View>
           <TouchableOpacity>
-            <Feather name='search' size={24} style={styles.searchIcon} />
+            <Ionicons
+              name='camera-outline'
+              size={SIZES.xLarge}
+              style={styles.searchIcon}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.searchWrapper}>
@@ -31,15 +51,16 @@ const Search = () => {
           />
         </View>
         <View>
-          <TouchableOpacity style={styles.searchBtn}>
-            <Ionicons
-              name='camera-outline'
-              size={SIZES.xLarge}
-              color={COLORS.offwhite}
-            />
+          <TouchableOpacity
+            style={styles.searchBtn}
+            onPress={() => handleSearch()}>
+            <Feather name='search' size={24} color={COLORS.offwhite} />
           </TouchableOpacity>
         </View>
       </View>
+      {searchKey.length === 0 ? (
+        View
+      ) }
     </SafeAreaView>
   );
 };
