@@ -1,7 +1,11 @@
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { axios } from "axios";
 import React, { useState } from "react";
 import {
+  Dimensions,
+  FlatList,
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -16,20 +20,16 @@ const Search = () => {
   const [searchResult, setSearchResult] = useState({});
 
   //http://localhost:3000/api/products/search/${searchKey}
-  const handleSearch = () => {
-    try {
-      const response = axios.get(
-        `http://localhost:3000/api/products/search/${searchKey}`
-        setSearchResults(response.data)
-      );
-      console.log("===============");
-      console.log(response.data);
-      console.log("===============");
-      //response.data
-    } catch (error) {
-      console.log("failed to get products", error);
-    }
-  };
+  // const handleSearch = async () => {
+  //   try {
+  //     const response = axios.get(
+  //       a`http://localhost:3000/api/products/search/${searchKey}`
+  //     );
+  //     setSearchResult(response.data);
+  //   } catch (error) {
+  //     console.log("failed to get products", error);
+  //   }
+  // };
   return (
     <SafeAreaView>
       <View style={styles.searchContainer}>
@@ -58,9 +58,26 @@ const Search = () => {
           </TouchableOpacity>
         </View>
       </View>
-      {searchKey.length === 0 ? (
-        View
-      ) }
+      {/* {searchKey.length === 0 ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            top: Dimensions,
+          }}>
+          <Image
+            source={require("../../assets/images/Pose23.png")}
+            style={styles.searchImage}
+          />
+        </View>
+      ) : (
+        <FlatList
+          data={searchResult}
+          keyExtractor={(item) => item._id}
+          renderItem={({ item }) => <Text>{item.title}</Text>}
+        />
+      )} */}
     </SafeAreaView>
   );
 };
@@ -103,5 +120,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: COLORS.primary,
+  },
+  searchImage: {
+    resizeMode: "contain",
+    width: SIZES.width - 80,
+    height: SIZES.height - 300,
+    opacity: 0.9,
+    backgroundColor: "#01bf71",
   },
 });
