@@ -8,9 +8,9 @@
     <true/>
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
-    <key>EXUpdatesSDKVersion</key>
-    <string>48.0.0</string>
     <key>EXUpdatesURL</key>
-    <string>https://exp.host/@tonny_js/shopsphere</string>
+    <string>https://u.expo.dev/01e1c908-d622-47bb-9a2c-82c6e27889b2</string>
+    <key>EXUpdatesRuntimeVersion</key>
+    <string>1.0.0</string>
   </dict>
 </plist>
